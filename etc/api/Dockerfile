@@ -4,7 +4,7 @@ RUN apk update && apk add --update --no-cache bash git supervisor rabbitmq-c rab
 
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 RUN chmod +x /usr/local/bin/install-php-extensions && sync && \
-    install-php-extensions amqp apcu bcmath gd intl pdo_mysql redis xdebug zip
+    install-php-extensions amqp apcu bcmath gd intl pdo_mysql redis xdebug zip sodium
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 

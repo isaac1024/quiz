@@ -1,0 +1,15 @@
+POST http://localhost:8000/login
+Content-Type: application/json
+Accept: application/json
+
+{
+  "username": "admin@0xa.es",
+  "password": "1234"
+}
+
+###
+
+GET http://localhost:8000/
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2Nzg2NDE1NjgsImV4cCI6MTY3ODY0NTE2OCwic3ViIjoiMzEyNmI0YTQtNjg4MC00NDIxLWJkYTAtNzgyYWEwMjE2YTMyIiwibmFtZSI6IkFkbWluIiwiZW1haWwiOiJhZG1pbkAweGEuZXMifQ.Vf_KO-EDGJpf9Gx-0OKz3IZN333D1nZEJclMweceS-YCp0BCBbzibLygDYscVEt5CD5wYNxfucamafbUN3tdn5U0rVZW2sShs7VCvup7uvdqHCd0J6neMbsSSfrpvvwByn9UKeqK9dJiD_LIL0ojt-RDAsKWb-JMCqL7idESclJNndhGNmi0ygZorw92PXesvyCLciKEvXGIsstCsb8m7lbI1v4AEzGI41mEK3Z4yHRU4SAM-zBvs_b1iOyqfMn8sxlbPtTp1Wa_4x3NXUR9zWj2XobmyKV5ZYV908f_C48snkmhPLAaULvRBgt_uzUbbsyKdnNSa4jM4xkDly6vmQ

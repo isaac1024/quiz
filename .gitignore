@@ -7,7 +7,9 @@
 /api/public/bundles/
 /api/var/
 /api/vendor/
-/api/.supervisord.log
-/api/.supervisord.pid
+/api/supervisord.log
+/api/supervisord.pid
 /api/.phpunit.result.cache
-/api//phpunit.xml
+/api/.phpcs-cache
+/api/.php-cs-fixer.cache
+/api/config/jwt/*.pem

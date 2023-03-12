@@ -1,5 +1,8 @@
-controllers:
+api_login_check:
+    path: /login
+
+test:
     resource:
-        path: ../src/Controller/
-        namespace: Quiz\Controller
+        path: ../src/Symfony/Controller/
+        namespace: App\Controller
     type: attribute
