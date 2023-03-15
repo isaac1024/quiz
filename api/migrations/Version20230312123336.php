@@ -18,11 +18,11 @@ final class Version20230312123336 extends AbstractMigration
     {
         $this->addSql(<<<SQL
             CREATE TABLE users (
-                id UUID NOT NULL, 
+                id UUID NOT NULL,
                 name VARCHAR(180) NOT NULL,
-                email VARCHAR(180) NOT NULL, 
-                password VARCHAR(255) NOT NULL, 
-                UNIQUE INDEX unique_users_email (email), 
+                email VARCHAR(180) NOT NULL,
+                password VARCHAR(255) NOT NULL,
+                UNIQUE INDEX unique_users_email (email),
                 PRIMARY KEY(id)
             ) DEFAULT CHARACTER SET utf8 COLLATE `utf8_unicode_ci` ENGINE = InnoDB;
         SQL);

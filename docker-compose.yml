@@ -4,12 +4,21 @@ services:
     image: mariadb:10
     restart: always
     environment:
-      MARIADB_RANDOM_ROOT_PASSWORD: true
+      MARIADB_ROOT_PASSWORD: ${DB_PASSWORD}
       MARIADB_DATABASE: ${DB_NAME}
       MARIADB_USER: ${DB_USER}
       MARIADB_PASSWORD: ${DB_PASSWORD}
     ports:
       - ${DB_PORT}:3306
+  amqp:
+    image: rabbitmq:3-management-alpine
+    restart: always
+    ports:
+      - ${AMQP_PORT}:5672
+      - ${AMQP_MANAGEMENT_PORT}:15672
+    environment:
+      - RABBITMQ_DEFAULT_USER=${AMQP_USER}
+      - RABBITMQ_DEFAULT_PASS=${AMQP_PASSWORD}
   api:
     build:
       context: .

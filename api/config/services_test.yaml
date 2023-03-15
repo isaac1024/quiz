@@ -1,0 +1,4 @@
+services:
+    Quiz\UserSession\Infrastructure\DoctrineUserRepository:
+        arguments: ['@doctrine.orm.default_entity_manager']
+        public: true

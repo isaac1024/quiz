@@ -1,2 +1,2 @@
 maker:
-  root_namespace: '\Symfony'
+  root_namespace: '\App'

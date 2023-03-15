@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\EventListener;
+namespace App\Service;
 
+use App\Entity\User;
 use Lexik\Bundle\JWTAuthenticationBundle\Event\JWTCreatedEvent;
 use Symfony\Bundle\SecurityBundle\Security;
-use App\Entity\User;
 
 final class JWTCreatedListener
 {
@@ -14,7 +14,7 @@ final class JWTCreatedListener
     {
     }
 
-    public function onJWTCreated(JWTCreatedEvent $event)
+    public function onJWTCreated(JWTCreatedEvent $event): void
     {
         $user = $this->getUser();
         $payload = $this->getPayload($user);

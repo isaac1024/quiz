@@ -5,22 +5,36 @@
     "prefer-stable": true,
     "require": {
         "php": ">=8.2",
+        "ext-amqp": "*",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "doctrine/annotations": "^2.0",
         "doctrine/doctrine-bundle": "^2.8",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.14",
+        "fakerphp/faker": "^1.21",
         "lexik/jwt-authentication-bundle": "^2.18",
+        "phpdocumentor/reflection-docblock": "^5.3",
+        "phpstan/phpdoc-parser": "^1.16",
+        "symfony/amqp-messenger": "6.2.*",
         "symfony/console": "6.2.*",
+        "symfony/doctrine-messenger": "6.2.*",
         "symfony/dotenv": "6.2.*",
         "symfony/flex": "^2",
         "symfony/framework-bundle": "6.2.*",
+        "symfony/messenger": "6.2.*",
         "symfony/monolog-bundle": "^3.8",
+        "symfony/property-access": "6.2.*",
+        "symfony/property-info": "6.2.*",
         "symfony/runtime": "6.2.*",
         "symfony/security-bundle": "6.2.*",
+        "symfony/serializer": "6.2.*",
+        "symfony/uid": "6.2.*",
+        "symfony/validator": "6.2.*",
         "symfony/yaml": "6.2.*"
     },
     "require-dev": {
+        "dama/doctrine-test-bundle": "^7.2",
         "friendsofphp/php-cs-fixer": "^3.14",
         "phpmd/phpmd": "^2.13",
         "phpunit/phpunit": "^9.5",
@@ -47,7 +61,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Quiz\\Tests\\": "tests/"
+            "Quiz\\Tests\\": "tests/Quiz/",
+            "TestsShared\\": "tests/Shared/"
         }
     },
     "replace": {
@@ -69,6 +84,17 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
+        ],
+        "test": "bin/phpunit",
+        "php-cs-fixer": "vendor/bin/php-cs-fixer fix --allow-risky=yes --using-cache=no",
+        "phpcs": "vendor/bin/phpcs",
+        "phpmd": "vendor/bin/phpmd ./src,./tests ansi rulesets.xml",
+        "psalm": "vendor/bin/psalm --no-cache",
+        "lint": [
+            "@php-cs-fixer",
+            "@phpcs",
+            "@phpmd",
+            "@psalm"
         ]
     },
     "conflict": {

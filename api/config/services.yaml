@@ -5,15 +5,35 @@ services:
         autowire: true
         autoconfigure: true
 
+    _instanceof:
+        Quiz\Shared\Domain\Bus\CommandHandler:
+            tags:
+                - { name: messenger.message_handler, bus: command.bus, from_transport: sync, method: dispatch }
+        Quiz\Shared\Domain\Bus\EventSubscriber:
+            tags:
+                - { name: messenger.message_handler, bus: event.bus, from_transport: async, method: dispatch }
+                - { name: quiz.event_subscriber }
+
     App\:
         resource: '../src/Symfony'
         exclude:
-            - '../src/Entity/'
-            - '../src/Kernel.php'
+            - '../src/Symfony/Controller'
+            - '../src/Symfony/Entity/'
+            - '../src/Symfony/Kernel.php'
     Quiz\:
         resource: '../src/Quiz'
 
-    acme_api.event.jwt_decoded_listener:
-        class: App\EventListener\JWTCreatedListener
+    App\Controller\:
+        resource: '../src/Symfony/Controller'
+        tags: [ controller.service_arguments ]
+
+    App\Service\RequestValueResolver:
+        tags:
+            - { name: controller.argument_value_resolver, priority: 50 }
+
+    App\Service\EventMapper:
+        arguments: [!tagged_iterator quiz.event_subscriber]
+
+    App\Service\JWTCreatedListener:
         tags:
             - { name: kernel.event_listener, event: lexik_jwt_authentication.on_jwt_created, method: onJWTCreated }

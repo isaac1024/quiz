@@ -12,7 +12,11 @@ doctrine:
                 type: xml
                 dir: '%kernel.project_dir%/src/Symfony/Doctrine'
                 prefix: 'App\Entity'
-                alias: App
+            UserSession:
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/src/Quiz/UserSession/Infrastructure/Doctrine'
+                prefix: 'Quiz\UserSession\Domain'
 
 when@test:
     doctrine:
