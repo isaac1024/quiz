@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace TestsShared;
+namespace Quiz\Tests\Shared\Infrastructure\PhpUnit;
 
-use Quiz\Shared\Domain\Bus\Event;
+use Quiz\Shared\Domain\Models\AggregateRoot;
 use ReflectionClass;
 use SebastianBergmann\Comparator\Comparator;
 use SebastianBergmann\Comparator\ComparisonFailure;
 
-final class EventComparator extends Comparator
+final class AggregateRootComparator extends Comparator
 {
-    private const IGNORE_PROPERTIES = ['eventId', 'occurredOn'];
+    private const IGNORE_PROPERTIES =  ['events', 'password'];
 
     public function accepts($expected, $actual): bool
     {
-        return $expected instanceof Event && $actual instanceof Event;
+        return $expected instanceof AggregateRoot && $actual instanceof AggregateRoot;
     }
 
     /**

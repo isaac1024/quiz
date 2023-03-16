@@ -17,10 +17,15 @@
         </ignoreFiles>
     </projectFiles>
     <issueHandlers>
-        <PropertyNotSetInConstructor errorLevel="suppress">
-            <errorLevel type="error">
-                <directory name="src/Quiz" />
+        <PropertyNotSetInConstructor errorLevel="error">
+            <errorLevel type="suppress">
+                <directory name="tests" />
             </errorLevel>
         </PropertyNotSetInConstructor>
+        <InternalMethod errorLevel="error">
+            <errorLevel type="suppress">
+                <directory name="tests" />
+            </errorLevel>
+        </InternalMethod>
     </issueHandlers>
 </psalm>

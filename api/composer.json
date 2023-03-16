@@ -61,8 +61,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Quiz\\Tests\\": "tests/Quiz/",
-            "TestsShared\\": "tests/Shared/"
+            "Quiz\\Tests\\": "tests/"
         }
     },
     "replace": {
@@ -88,7 +87,7 @@
         "test": "bin/phpunit",
         "php-cs-fixer": "vendor/bin/php-cs-fixer fix --allow-risky=yes --using-cache=no",
         "phpcs": "vendor/bin/phpcs",
-        "phpmd": "vendor/bin/phpmd ./src,./tests ansi rulesets.xml",
+        "phpmd": "vendor/bin/phpmd ./src ansi rulesets.xml",
         "psalm": "vendor/bin/psalm --no-cache",
         "lint": [
             "@php-cs-fixer",

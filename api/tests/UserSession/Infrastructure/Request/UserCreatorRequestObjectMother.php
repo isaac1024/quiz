@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TestsShared\Request;
+namespace Quiz\Tests\UserSession\Infrastructure\Request;
 
 use Quiz\Tests\UserSession\Domain\EmailObjectMother;
 use Quiz\Tests\UserSession\Domain\NameObjectMother;

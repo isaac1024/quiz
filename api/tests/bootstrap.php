@@ -1,9 +1,9 @@
 <?php
 
+use Quiz\Tests\Shared\Infrastructure\PhpUnit\AggregateRootComparator;
+use Quiz\Tests\Shared\Infrastructure\PhpUnit\EventComparator;
 use SebastianBergmann\Comparator\Factory as ComparatorFactory;
 use Symfony\Component\Dotenv\Dotenv;
-use TestsShared\AggregateRootComparator;
-use TestsShared\EventComparator;
 
 require dirname(__DIR__) . '/vendor/autoload.php';
 

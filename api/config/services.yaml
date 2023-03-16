@@ -13,19 +13,16 @@ services:
             tags:
                 - { name: messenger.message_handler, bus: event.bus, from_transport: async, method: dispatch }
                 - { name: quiz.event_subscriber }
+        Quiz\Shared\Infrastructure\Symfony\ApiController:
+            tags: ['controller.service_arguments']
 
     App\:
         resource: '../src/Symfony'
         exclude:
-            - '../src/Symfony/Controller'
             - '../src/Symfony/Entity/'
             - '../src/Symfony/Kernel.php'
     Quiz\:
         resource: '../src/Quiz'
-
-    App\Controller\:
-        resource: '../src/Symfony/Controller'
-        tags: [ controller.service_arguments ]
 
     App\Service\RequestValueResolver:
         tags:
@@ -37,3 +34,8 @@ services:
     App\Service\JWTCreatedListener:
         tags:
             - { name: kernel.event_listener, event: lexik_jwt_authentication.on_jwt_created, method: onJWTCreated }
+
+    App\Service\ApiExceptionListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception }
+
