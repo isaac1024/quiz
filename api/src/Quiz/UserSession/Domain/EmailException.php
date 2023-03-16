@@ -17,4 +17,9 @@ final class EmailException extends QuizException
     {
         return new EmailException("email_already_exist", sprintf("Already exist user with email %s.", $email));
     }
+
+    public static function tooLong(string $email, int $maxLength): EmailException
+    {
+        return new EmailException("long_email", sprintf("Email %s is too long. Max length %d", $email, $maxLength));
+    }
 }

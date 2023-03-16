@@ -6,6 +6,8 @@ namespace Quiz\UserSession\Domain;
 
 final readonly class Name
 {
+    public const MAX_LENGTH = 180;
+
     public function __construct(public string $value)
     {
         $this->validate();
@@ -19,6 +21,10 @@ final readonly class Name
 
         if (empty($this->value)) {
             throw NameException::emptyName();
+        }
+
+        if (strlen($this->value) > self::MAX_LENGTH) {
+            throw NameException::tooLong($this->value, self::MAX_LENGTH);
         }
     }
 

@@ -22,7 +22,7 @@ class DoctrineUserRepositoryTest extends IntegrationTestCase
     {
         parent::setUp();
 
-        $this->repository = $this->get(DoctrineUserRepository::class);
+        $this->repository ??= $this->get(DoctrineUserRepository::class);
     }
 
     public function testCreateUser(): void

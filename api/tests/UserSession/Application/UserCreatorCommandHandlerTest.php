@@ -32,9 +32,9 @@ class UserCreatorCommandHandlerTest extends UnitTestCase
     {
         parent::setUp();
 
-        $this->userRepository = $this->getMockBuilder(UserRepository::class)->getMock();
-        $this->eventBus = $this->getMockBuilder(EventBus::class)->getMock();
-        $this->userCreatorCommandHandler = new UserCreatorCommandHandler($this->userRepository, $this->eventBus);
+        $this->userRepository ??= $this->getMockBuilder(UserRepository::class)->getMock();
+        $this->eventBus ??= $this->getMockBuilder(EventBus::class)->getMock();
+        $this->userCreatorCommandHandler ??= new UserCreatorCommandHandler($this->userRepository, $this->eventBus);
     }
 
     public function testCreateUser(): void
@@ -211,6 +211,58 @@ class UserCreatorCommandHandlerTest extends UnitTestCase
             ->method('byCriteria')
             ->with($emailCriteria)
             ->willReturn(new UserCollection($user));
+
+        $this->userRepository->expects($this->never())
+            ->method('save');
+
+        $this->eventBus->expects($this->never())
+            ->method('publish');
+
+        $this->userCreatorCommandHandler->dispatch($userCreatorCommand);
+    }
+
+    public function testCreateUserWithTooLongEmailShouldFail(): void
+    {
+        $faker = Factory::create();
+        $userCreatorCommand = UserCreatorCommandObjectMother::make(email: $faker->regexify("/\w{180}@local\.host/"));
+        $this->expectException(EmailException::class);
+        $this->expectExceptionMessage(sprintf("Email %s is too long. Max length %d", $userCreatorCommand->email, 180));
+        $emailCriteria = new Criteria(
+            new Filters(
+                new Filter(Email::class, $userCreatorCommand->email)
+            ),
+        );
+
+        $this->userRepository->expects($this->once())
+            ->method('byCriteria')
+            ->with($emailCriteria)
+            ->willReturn(new UserCollection());
+
+        $this->userRepository->expects($this->never())
+            ->method('save');
+
+        $this->eventBus->expects($this->never())
+            ->method('publish');
+
+        $this->userCreatorCommandHandler->dispatch($userCreatorCommand);
+    }
+
+    public function testCreateUserWithTooLongNameShouldFail(): void
+    {
+        $faker = Factory::create();
+        $userCreatorCommand = UserCreatorCommandObjectMother::make(name: $faker->regexify("/\w{181}"));
+        $this->expectException(NameException::class);
+        $this->expectExceptionMessage(sprintf("Name %s is too long. Max length %d", $userCreatorCommand->name, 180));
+        $emailCriteria = new Criteria(
+            new Filters(
+                new Filter(Email::class, $userCreatorCommand->email)
+            ),
+        );
+
+        $this->userRepository->expects($this->once())
+            ->method('byCriteria')
+            ->with($emailCriteria)
+            ->willReturn(new UserCollection());
 
         $this->userRepository->expects($this->never())
             ->method('save');

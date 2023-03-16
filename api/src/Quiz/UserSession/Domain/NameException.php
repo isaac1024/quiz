@@ -20,4 +20,9 @@ final class NameException extends QuizException
     {
         return new NameException("empty_name", "Name is empty.");
     }
+
+    public static function tooLong(string $name, int $maxLength): NameException
+    {
+        return new NameException("long_name", sprintf("Name %s is too long. Max length %d", $name, $maxLength));
+    }
 }
