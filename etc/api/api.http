@@ -1,29 +1,51 @@
-POST {{url}}/register
+### Register new user
+POST {{host}}/register
 Content-Type: application/json
 Accept: application/json
 
 {
-  "email": "{{user.email}}",
-  "name": "{{user.name}}",
-  "password": "{{user.password}}"
+  "email": "{{$random.email}}",
+  "name": "{{$random.alphabetic(5)}}",
+  "password": "{{$random.alphanumeric(12)}}"
 }
 
-###
+> {%
+  if (response.status === 201) {
+    client.global.set("user_uuid", response.body.data.id);
+    client.global.set("user_email", JSON.parse(request.body()).email);
+    client.global.set("user_password", JSON.parse(request.body()).password);
+  }
+%}
 
-POST {{url}}/login
+### Login
+POST {{host}}/login
 Content-Type: application/json
 Accept: application/json
 
 {
-  "username": "{{user.email}}",
-  "password": "{{user.password}}"
+  "username": "{{user_email}}",
+  "password": "{{user_password}}"
 }
 
-> {% client.global.set("auth_token", response.body.token); %}
+> {%
+  if (response.status === 200) {
+    client.global.set("auth_token", response.body.token);
+  }
+%}
 
-###
-
-GET {{url}}
+### Change password
+PUT {{host}}/user/{{user_uuid}}/password
 Content-Type: application/json
 Accept: application/json
 Authorization: Bearer {{auth_token}}
+
+{
+  "oldPassword": "{{user_password}}",
+  "newPassword": "{{$random.alphanumeric(12)}}"
+}
+
+> {%
+  if (response.status === 200) {
+    client.global.set("user_password", JSON.parse(request.body()).newPassword);
+  }
+%}
