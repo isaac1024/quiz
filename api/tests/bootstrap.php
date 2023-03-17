@@ -20,28 +20,7 @@ if ($_SERVER['APP_DEBUG']) {
     umask(0000);
 }
 
-bootDatabase();
-registerComparators();
-
-function bootDatabase(): void
-{
-    $kernel = new Kernel('test', true);
-    $kernel->boot();
-
-    $application = new Application($kernel);
-    $application->setAutoExit(false);
-
-    $application->run(new ArrayInput(['command' => 'doctrine:database:drop', '--if-exists' => '1', '--force' => '1']));
-    $application->run(new ArrayInput(['command' => 'doctrine:database:create']));
-    $application->run(new ArrayInput(['command' => 'doctrine:migrations:migrate', '-n']));
-
-    $kernel->shutdown();
-}
-
-function registerComparators(): void
-{
-    $comparatorFactory = ComparatorFactory::getInstance();
-    $comparatorFactory->reset();
-    $comparatorFactory->register(new AggregateRootComparator());
-    $comparatorFactory->register(new EventComparator());
-}
+$comparatorFactory = ComparatorFactory::getInstance();
+$comparatorFactory->reset();
+$comparatorFactory->register(new AggregateRootComparator());
+$comparatorFactory->register(new EventComparator());

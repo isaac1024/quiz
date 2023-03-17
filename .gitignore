@@ -13,3 +13,4 @@
 /api/.phpcs-cache
 /api/.php-cs-fixer.cache
 /api/config/jwt/*.pem
+/api/tests/.phpunit.cache/
