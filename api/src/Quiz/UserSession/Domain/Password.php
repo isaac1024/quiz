@@ -19,13 +19,26 @@ final readonly class Password
     private function validate(string $password): void
     {
         if (strlen($password) < self::MIN_CHARACTERS) {
-            throw PasswordException::tooShort($password, self::MIN_CHARACTERS);
+            throw PasswordException::tooShort(self::MIN_CHARACTERS);
         }
     }
 
     private function hashPassword(string $password): string
     {
         return password_hash($password, PASSWORD_ARGON2ID);
+    }
+
+    public function update(string $old, string $new): Password
+    {
+        if (!password_verify($old, $this->value)) {
+            throw PasswordException::notMatch();
+        }
+
+        if ($old === $new) {
+            throw PasswordException::notChanged();
+        }
+
+        return new Password($new);
     }
 
     public function __toString(): string

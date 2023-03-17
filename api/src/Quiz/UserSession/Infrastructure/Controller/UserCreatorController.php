@@ -18,14 +18,9 @@ final readonly class UserCreatorController extends ApiController
     public function __invoke(UserCreatorRequest $request): JsonResponse
     {
         $id = UuidUtils::random();
-        $this->commandBus->dispatch(new UserCreatorCommand(
-            $id,
-            $request->email,
-            $request->name,
-            $request->password,
-        ));
+        $this->commandBus->dispatch(new UserCreatorCommand($id, $request->email, $request->name, $request->password));
 
-        return new JsonResponse(['id' => $id], Response::HTTP_CREATED);
+        return new JsonResponse(['data' => ['id' => $id]], Response::HTTP_CREATED);
     }
 
     protected function mapExceptions(): array

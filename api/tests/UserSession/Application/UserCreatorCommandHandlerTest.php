@@ -174,7 +174,7 @@ class UserCreatorCommandHandlerTest extends UnitTestCase
         $shortPassword = $faker->password(0, 11);
         $userCreatorCommand = UserCreatorCommandObjectMother::make(password: $shortPassword);
         $this->expectException(PasswordException::class);
-        $this->expectExceptionMessage(sprintf("Password %s is too short. Min length %d.", $shortPassword, 12));
+        $this->expectExceptionMessage(sprintf("Password is too short. Min length %d.", 12));
         $emailCriteria = new Criteria(
             new Filters(
                 new Filter(Email::class, $userCreatorCommand->email)

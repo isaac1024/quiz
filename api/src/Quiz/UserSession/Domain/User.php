@@ -31,6 +31,14 @@ final class User extends AggregateRoot
         return $user;
     }
 
+    public function updatePassword(string $oldPassword, string $newPassword): User
+    {
+        $this->password = $this->password->update($oldPassword, $newPassword);
+        $this->registerNewEvent(new UserPasswordUpdated((string)$this->userId));
+
+        return $this;
+    }
+
     public function save(UserRepository $userRepository, EventBus $eventBus): void
     {
         $userRepository->save($this);

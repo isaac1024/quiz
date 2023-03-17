@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
     <entity name="Quiz\UserSession\Domain\User" table="users">
-        <id name="userId" column="id" type="guid" />
-        <field name="email" column="email" type="string" length="180" nullable="false" unique="true" />
-        <field name="name" column="name" type="string" length="180" nullable="false" />
-        <field name="password" column="password" type="string" length="255" nullable="false" />
+        <id name="userId" column="id" type="user_id" length="36" />
+        <embedded name="email" class="Quiz\UserSession\Domain\Email" use-column-prefix="false" />
+        <embedded name="name" class="Quiz\UserSession\Domain\Name" use-column-prefix="false" />
+        <embedded name="password" class="Quiz\UserSession\Domain\Password" use-column-prefix="false" />
     </entity>
 </doctrine-mapping>

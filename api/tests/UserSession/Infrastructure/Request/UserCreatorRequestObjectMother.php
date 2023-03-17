@@ -18,7 +18,7 @@ class UserCreatorRequestObjectMother
         return [
             'email' => $email ?? EmailObjectMother::make()->value,
             'name' => $name ?? NameObjectMother::make()->value,
-            'password' => $password ?? PasswordObjectMother::make()->value,
+            'password' => $password ?? PasswordObjectMother::raw(),
         ];
     }
 }

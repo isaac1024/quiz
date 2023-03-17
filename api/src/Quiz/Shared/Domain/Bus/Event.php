@@ -13,8 +13,11 @@ abstract class Event
     public readonly string $eventId;
     public readonly DateTimeImmutable $occurredOn;
 
-    public function __construct(public readonly string $aggregateId, ?string $eventId, ?DateTimeImmutable $occurredOn)
-    {
+    public function __construct(
+        public readonly string $aggregateId,
+        ?string $eventId = null,
+        ?DateTimeImmutable $occurredOn = null
+    ) {
         $this->eventId = $eventId ?: UuidUtils::random();
         $this->occurredOn = $occurredOn ?: DateTimeUtils::now();
     }

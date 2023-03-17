@@ -7,6 +7,7 @@ namespace App\Service;
 use Quiz\Shared\Infrastructure\Symfony\ExceptionToHttpStatusCode;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
+use Symfony\Component\Messenger\Exception\HandlerFailedException;
 use Throwable;
 
 final readonly class ApiExceptionListener
@@ -23,9 +24,14 @@ final readonly class ApiExceptionListener
 
     private function getJsonResponse(Throwable $exception): JsonResponse
     {
+        $e = $exception;
+        while ($e instanceof HandlerFailedException) {
+            $e = $e->getPrevious();
+        }
+
         return new JsonResponse(
-            ['code' => $exception->errorCode ?? null, 'message' => $exception->getMessage()],
-            $this->exceptionToHttpStatusCode->getStatusCode($exception::class)
+            ['code' => $e->errorCode ?? null, 'message' => $e->getMessage()],
+            $this->exceptionToHttpStatusCode->getStatusCode($e::class)
         );
     }
 }

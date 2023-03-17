@@ -9,9 +9,16 @@ use Quiz\UserSession\Domain\Password;
 
 final class PasswordObjectMother
 {
+    public const MINLENGTH = 12;
+    public const MAXLENGTH = 36;
+
     public static function make(?string $password = null): Password
     {
-        $faker = Factory::create();
-        return new Password($password ?? $faker->password(12, 36));
+        return new Password($password ?? PasswordObjectMother::raw());
+    }
+
+    public static function raw(): string
+    {
+        return Factory::create()->password(self::MINLENGTH, self::MAXLENGTH);
     }
 }

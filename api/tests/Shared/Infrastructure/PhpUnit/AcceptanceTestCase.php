@@ -28,4 +28,18 @@ abstract class AcceptanceTestCase extends WebTestCase
         $response = $this->client->getResponse();
         self::assertSame($statusCode, $response->getStatusCode());
     }
+
+    protected function getRepository(string $repositoryName)
+    {
+        return $this->client->getContainer()->get($repositoryName);
+    }
+
+    protected function login(string $username, string $password): void
+    {
+        $this->json('POST', '/login', ['username' => $username, 'password' => $password]);
+        $token = json_decode($this->client->getResponse()->getContent(), true)['token'] ?? null;
+        if ($token) {
+            $this->client->setServerParameter('HTTP_Authorization', sprintf("Bearer %s", $token));
+        }
+    }
 }

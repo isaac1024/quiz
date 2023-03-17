@@ -1,4 +1,0 @@
-user_creator:
-  path: /register
-  controller: Quiz\UserSession\Infrastructure\Controller\UserCreatorController
-  methods: POST

@@ -34,13 +34,22 @@ class DoctrineUserRepositoryTest extends IntegrationTestCase
         self::addToAssertionCount(1);
     }
 
+    public function testFindUser(): void
+    {
+        $user = UserObjectMother::make();
+
+        $this->repository->save($user);
+
+        self::assertEquals($user, $this->repository->find($user->userId()));
+    }
+
     public function testSearchUsersByEmail(): void
     {
         $expectedUser = UserObjectMother::make();
         $this->repository->save($expectedUser);
 
         $criteria = new Criteria(
-            new Filters(new Filter(Email::class, $expectedUser->email())),
+            new Filters(new Filter(Email::class, $expectedUser->email()->value)),
             new Order(Name::class),
             10,
             0

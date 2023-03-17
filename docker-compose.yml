@@ -27,3 +27,6 @@ services:
       - ${API_PORT}:8000
     volumes:
       - ./api:/app
+    depends_on:
+      - db
+      - amqp

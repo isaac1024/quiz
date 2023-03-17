@@ -1,6 +1,8 @@
 doctrine:
     dbal:
         url: '%env(resolve:DATABASE_URL)%'
+        types:
+            user_id: Quiz\UserSession\Infrastructure\Doctrine\UserIdType
     orm:
         auto_generate_proxy_classes: true
         enable_lazy_ghost_objects: true
@@ -15,7 +17,7 @@ doctrine:
             UserSession:
                 is_bundle: false
                 type: xml
-                dir: '%kernel.project_dir%/src/Quiz/UserSession/Infrastructure/Doctrine'
+                dir: '%kernel.project_dir%/src/Quiz/UserSession/Infrastructure/Doctrine/'
                 prefix: 'Quiz\UserSession\Domain'
 
 when@test:

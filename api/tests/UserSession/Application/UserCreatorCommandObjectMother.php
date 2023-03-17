@@ -22,7 +22,7 @@ final class UserCreatorCommandObjectMother
             $userId ?? UserIdObjectMother::make()->value,
             $email ?? EmailObjectMother::make()->value,
             $name ?? NameObjectMother::make()->value,
-            $password ?? PasswordObjectMother::make()->value,
+            $password ?? PasswordObjectMother::raw(),
         );
     }
 }

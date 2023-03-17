@@ -1,0 +1,11 @@
+user_creator:
+  path: /register
+  controller: Quiz\UserSession\Infrastructure\Controller\UserCreatorController
+  methods: POST
+
+user_password_updater:
+  path: /user/{userId}/password
+  controller: Quiz\UserSession\Infrastructure\Controller\UserPasswordUpdaterController
+  methods: PUT
+  requirements:
+    userId: !php/const Symfony\Component\Routing\Requirement\Requirement::UUID_V4

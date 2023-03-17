@@ -18,14 +18,19 @@ use Quiz\UserSession\Domain\UserRepository;
 final readonly class DoctrineUserRepository implements UserRepository
 {
     private const FIELD_MAPPER = [
-        UserId::class => 'id',
-        Email::class => 'email',
-        Name::class => 'name',
-        Password::class => 'password',
+        UserId::class => 'userId',
+        Email::class => 'email.value',
+        Name::class => 'name.value',
+        Password::class => 'password.value',
     ];
 
     public function __construct(private EntityManagerInterface $entityManager)
     {
+    }
+
+    public function find(UserId $userId): ?User
+    {
+        return $this->entityManager->find(User::class, $userId->value);
     }
 
     public function byCriteria(Criteria $criteria): UserCollection
