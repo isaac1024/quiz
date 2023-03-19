@@ -11,10 +11,11 @@ framework:
             event.bus:
                 default_middleware:
                     enabled: true
-                    allow_no_handlers: true
+                    allow_no_handlers: false
                     allow_no_senders: false
                 middleware:
                     - validation
+                    - 'App\Service\AmqpEventMapperMiddleware'
 
         transports:
             async:
@@ -25,14 +26,14 @@ framework:
                         name: quiz_events
                         type: topic
                     queues:
-                        test:
-                            binding_keys: ['quiz.#']
+                        quiz.user.send_validation:
+                            binding_keys: ['quiz.user.created']
             failed: 'doctrine://default?queue_name=failed'
             sync: 'sync://'
 
         routing:
             'Quiz\Shared\Domain\Bus\Command': sync
-            'Quiz\Shared\Domain\Bus\Event': async
+            'Quiz\Shared\Domain\Bus\DomainEvent': async
 
 # when@test:
 #    framework:

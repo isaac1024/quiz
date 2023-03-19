@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Quiz\Shared\Domain\Models;
 
-use Quiz\Shared\Domain\Bus\Event;
+use Quiz\Shared\Domain\Bus\DomainEvent;
 use Quiz\Shared\Domain\Bus\EventBus;
 
 abstract class AggregateRoot
 {
-    /** @var Event[] $events */
+    /** @var DomainEvent[] $events */
     private array $events = [];
 
     final protected function publishEvents(EventBus $eventBus): void
@@ -18,7 +18,7 @@ abstract class AggregateRoot
         $this->events = [];
     }
 
-    final protected function registerNewEvent(Event $event): void
+    final protected function registerNewEvent(DomainEvent $event): void
     {
         $this->events[] = $event;
     }

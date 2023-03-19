@@ -4,34 +4,16 @@ declare(strict_types=1);
 
 namespace Quiz\UserSession\Domain;
 
-use DateTimeImmutable;
-use Quiz\Shared\Domain\Bus\Event;
-use Quiz\Shared\Domain\Models\DateTimeUtils;
+use Quiz\Shared\Domain\Bus\DomainEvent;
 
-final class UserCreated extends Event
+final class UserCreated extends DomainEvent
 {
-    public function __construct(
-        string $id,
-        private readonly string $email,
-        private readonly string $name,
-        ?string $eventId = null,
-        ?DateTimeImmutable $occurredOn = null
-    ) {
-        parent::__construct($id, $eventId, $occurredOn);
-    }
-
-    public static function fromConsumer(array $eventData): static
+    public function __construct(string $id, private readonly string $email, private readonly string $name)
     {
-        return new UserCreated(
-            $eventData['data']['id'],
-            $eventData['data']['attributes']['email'],
-            $eventData['data']['attributes']['name'],
-            $eventData['id'],
-            DateTimeUtils::fromString($eventData['occurredOn']),
-        );
+        parent::__construct($id);
     }
 
-    public static function type(): string
+    public function type(): string
     {
         return 'quiz.user.created';
     }

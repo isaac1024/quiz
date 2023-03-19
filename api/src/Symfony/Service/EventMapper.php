@@ -35,8 +35,9 @@ final class EventMapper
         return $parameters[0]->getType()->getName();
     }
 
-    public function eventClassName(string $eventType): ?string
+    public function eventClassName(string $queueName, string $eventType): ?string
     {
-        return $this->events[$eventType] ?? null;
+        $key = sprintf("%s.%s", $queueName, $eventType);
+        return $this->events[$key] ?? null;
     }
 }

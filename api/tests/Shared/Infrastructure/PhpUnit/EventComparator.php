@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Quiz\Tests\Shared\Infrastructure\PhpUnit;
 
-use Quiz\Shared\Domain\Bus\Event;
+use Quiz\Shared\Domain\Bus\DomainEvent;
 use ReflectionClass;
 use SebastianBergmann\Comparator\Comparator;
 use SebastianBergmann\Comparator\ComparisonFailure;
@@ -15,7 +15,7 @@ final class EventComparator extends Comparator
 
     public function accepts($expected, $actual): bool
     {
-        return $expected instanceof Event && $actual instanceof Event;
+        return $expected instanceof DomainEvent && $actual instanceof DomainEvent;
     }
 
     /**

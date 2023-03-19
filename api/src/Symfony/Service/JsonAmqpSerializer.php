@@ -4,55 +4,36 @@ declare(strict_types=1);
 
 namespace App\Service;
 
-use Quiz\Shared\Domain\Bus\Event;
+use Quiz\Shared\Domain\Bus\DomainEvent;
 use Quiz\Shared\Domain\Models\DateTimeUtils;
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\Transport\Serialization\SerializerInterface;
 
 final class JsonAmqpSerializer implements SerializerInterface
 {
-    public function __construct(private readonly EventMapper $eventMapper)
-    {
-    }
-
     public function decode(array $encodedEnvelope): Envelope
     {
-        $eventData = json_decode($encodedEnvelope['body'], true);
-        $eventClassName = $this->eventMapper->eventClassName($eventData['data']['type']);
-
-        return new Envelope($eventClassName::fromConsumer($eventData));
+        return new Envelope(new AmqpMessage($encodedEnvelope['body']));
     }
 
     public function encode(Envelope $envelope): array
     {
-        /** @var Event $event */
         $event = $envelope->getMessage();
+        $body = $event instanceof DomainEvent ? json_encode($this->getBody($event)) : (string)$event;
 
-        return [
-            'headers' => $this->getHeaders($event),
-            'body' => json_encode($this->getBody($event)),
-        ];
+        return ['headers' => [], 'body' => $body];
     }
 
-    private function getBody(Event $event): array
+    private function getBody(DomainEvent $event): array
     {
         return [
             'id' => $event->eventId,
             'data' => [
                 'id' => $event->aggregateId,
-                'type' => $event::type(),
+                'type' => $event->type(),
                 'attributes' => $event->attributes(),
             ],
             'occurredOn' => DateTimeUtils::format($event->occurredOn),
-        ];
-    }
-
-    public function getHeaders(Event $event): array
-    {
-        return [
-            'content-type' => 'application/json',
-            'content-encoding' => 'utf-8',
-            'message-id' => $event->eventId
         ];
     }
 }

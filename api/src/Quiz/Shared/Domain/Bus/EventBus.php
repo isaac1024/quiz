@@ -6,5 +6,5 @@ namespace Quiz\Shared\Domain\Bus;
 
 interface EventBus
 {
-    public function publish(Event ...$events): void;
+    public function publish(DomainEvent ...$events): void;
 }

@@ -9,7 +9,6 @@
 /api/vendor/
 /api/supervisord.log
 /api/supervisord.pid
-/api/.phpunit.result.cache
 /api/.phpcs-cache
 /api/.php-cs-fixer.cache
 /api/config/jwt/*.pem
