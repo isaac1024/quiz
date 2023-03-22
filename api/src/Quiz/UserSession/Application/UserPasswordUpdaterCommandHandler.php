@@ -6,7 +6,7 @@ namespace Quiz\UserSession\Application;
 
 use Quiz\Shared\Domain\Bus\CommandHandler;
 use Quiz\Shared\Domain\Bus\EventBus;
-use Quiz\UserSession\Domain\UserId;
+use Quiz\Shared\Domain\Models\UserId;
 use Quiz\UserSession\Domain\UserNotFoundException;
 use Quiz\UserSession\Domain\UserRepository;
 

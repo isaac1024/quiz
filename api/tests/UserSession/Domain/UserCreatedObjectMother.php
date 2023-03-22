@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Quiz\Tests\UserSession\Domain;
 
+use Quiz\Tests\Shared\Domain\Models\UserIdObjectMother;
 use Quiz\UserSession\Domain\User;
 use Quiz\UserSession\Domain\UserCreated;
 

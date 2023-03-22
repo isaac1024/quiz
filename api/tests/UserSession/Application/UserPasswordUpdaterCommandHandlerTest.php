@@ -7,13 +7,14 @@ namespace Quiz\Tests\UserSession\Application;
 use Faker\Factory;
 use PHPUnit\Framework\MockObject\MockObject;
 use Quiz\Shared\Domain\Bus\EventBus;
+use Quiz\Tests\Shared\Domain\Models\UserIdObjectMother;
 use Quiz\Tests\Shared\Infrastructure\PhpUnit\UnitTestCase;
 use Quiz\Tests\UserSession\Domain\PasswordObjectMother;
-use Quiz\Tests\UserSession\Domain\UserIdObjectMother;
 use Quiz\Tests\UserSession\Domain\UserObjectMother;
 use Quiz\Tests\UserSession\Domain\UserPasswordUpdatedObjectMother;
 use Quiz\UserSession\Application\UserPasswordUpdaterCommandHandler;
 use Quiz\UserSession\Domain\PasswordException;
+use Quiz\UserSession\Domain\UserNotFoundException;
 use Quiz\UserSession\Domain\UserRepository;
 
 class UserPasswordUpdaterCommandHandlerTest extends UnitTestCase
@@ -126,6 +127,26 @@ class UserPasswordUpdaterCommandHandlerTest extends UnitTestCase
             ->method('find')
             ->with($user->userId())
             ->willReturn($user);
+
+        $this->userRepository->expects($this->never())
+            ->method('save');
+
+        $this->eventBus->expects($this->never())
+            ->method('publish');
+
+        $this->userPasswordUpdaterCommandHandler->dispatch($userPasswordUpdaterCommand);
+    }
+
+    public function testNotFoundUserShouldFail(): void
+    {
+        $userPasswordUpdaterCommand = UserPasswordUpdaterCommandObjectMother::make();
+        $this->expectException(UserNotFoundException::class);
+        $this->expectExceptionMessage(sprintf("User %s not found.", $userPasswordUpdaterCommand->userId));
+
+        $this->userRepository->expects($this->once())
+            ->method('find')
+            ->with($userPasswordUpdaterCommand->userId)
+            ->willReturn(null);
 
         $this->userRepository->expects($this->never())
             ->method('save');

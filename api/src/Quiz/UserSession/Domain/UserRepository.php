@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Quiz\UserSession\Domain;
 
 use Quiz\Shared\Domain\Criteria\Criteria;
+use Quiz\Shared\Domain\Models\UserId;
 
 interface UserRepository
 {

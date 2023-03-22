@@ -6,13 +6,13 @@ namespace Quiz\UserSession\Infrastructure\Repository;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Quiz\Shared\Domain\Criteria\Criteria;
+use Quiz\Shared\Domain\Models\UserId;
 use Quiz\Shared\Infrastructure\Doctrine\DomainCriteriaToDoctrineCriteria;
 use Quiz\UserSession\Domain\Email;
 use Quiz\UserSession\Domain\Name;
 use Quiz\UserSession\Domain\Password;
 use Quiz\UserSession\Domain\User;
 use Quiz\UserSession\Domain\UserCollection;
-use Quiz\UserSession\Domain\UserId;
 use Quiz\UserSession\Domain\UserRepository;
 
 final readonly class DoctrineUserRepository implements UserRepository

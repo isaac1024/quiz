@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
+    <embeddable name="Quiz\UserEmailVerification\Domain\Verified">
+        <field name="isVerified" column="is_verified" type="boolean" />
+        <field name="token" column="token" type="string" length="128" unique="true" nullable="true" />
+        <field name="expiration" column="token_expiration" type="datetime_immutable" nullable="true" />
+    </embeddable>
+</doctrine-mapping>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
+    <entity name="Quiz\UserEmailVerification\Domain\User" table="users">
+        <id name="userId" column="id" type="user_id" />
+        <embedded name="email" class="Quiz\UserEmailVerification\Domain\Email" use-column-prefix="false" />
+        <field name="name" column="name" type="string" updatable="false" />
+        <embedded name="verified" class="Quiz\UserEmailVerification\Domain\Verified" use-column-prefix="false" />
+    </entity>
+</doctrine-mapping>

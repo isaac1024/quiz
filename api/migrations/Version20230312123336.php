@@ -22,6 +22,9 @@ final class Version20230312123336 extends AbstractMigration
                 name VARCHAR(180) NOT NULL,
                 email VARCHAR(180) NOT NULL,
                 password VARCHAR(255) NOT NULL,
+                is_verified BOOLEAN NOT NULL DEFAULT FALSE,
+                token CHAR(128) DEFAULT NULL,
+                token_expiration DATETIME DEFAULT NULL,
                 UNIQUE INDEX unique_users_email (email),
                 PRIMARY KEY(id)
             ) DEFAULT CHARACTER SET utf8 COLLATE `utf8_unicode_ci` ENGINE = InnoDB;

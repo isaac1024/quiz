@@ -10,6 +10,7 @@ use Quiz\Shared\Domain\Bus\EventBus;
 use Quiz\Shared\Domain\Criteria\Criteria;
 use Quiz\Shared\Domain\Criteria\Filter;
 use Quiz\Shared\Domain\Criteria\Filters;
+use Quiz\Shared\Domain\Models\UserIdException;
 use Quiz\Tests\Shared\Infrastructure\PhpUnit\UnitTestCase;
 use Quiz\Tests\UserSession\Domain\UserCreatedObjectMother;
 use Quiz\Tests\UserSession\Domain\UserObjectMother;
@@ -19,7 +20,6 @@ use Quiz\UserSession\Domain\EmailException;
 use Quiz\UserSession\Domain\NameException;
 use Quiz\UserSession\Domain\PasswordException;
 use Quiz\UserSession\Domain\UserCollection;
-use Quiz\UserSession\Domain\UserIdException;
 use Quiz\UserSession\Domain\UserRepository;
 
 class UserCreatorCommandHandlerTest extends UnitTestCase

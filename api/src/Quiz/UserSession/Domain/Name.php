@@ -27,9 +27,4 @@ final readonly class Name
             throw NameException::tooLong($this->value, self::MAX_LENGTH);
         }
     }
-
-    public function __toString(): string
-    {
-        return $this->value;
-    }
 }

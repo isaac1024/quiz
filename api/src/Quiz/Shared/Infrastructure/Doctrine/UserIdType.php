@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Quiz\UserSession\Infrastructure\Doctrine;
+namespace Quiz\Shared\Infrastructure\Doctrine;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
-use Quiz\UserSession\Domain\UserId;
+use Quiz\Shared\Domain\Models\UserId;
 
 final class UserIdType extends Type
 {

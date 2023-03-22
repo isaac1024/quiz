@@ -6,6 +6,7 @@ namespace Quiz\UserSession\Domain;
 
 use Quiz\Shared\Domain\Bus\EventBus;
 use Quiz\Shared\Domain\Models\AggregateRoot;
+use Quiz\Shared\Domain\Models\UserId;
 
 final class User extends AggregateRoot
 {

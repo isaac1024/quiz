@@ -2,9 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Quiz\UserSession\Domain;
-
-use Quiz\Shared\Domain\Models\Uuid;
+namespace Quiz\Shared\Domain\Models;
 
 final readonly class UserId extends Uuid
 {

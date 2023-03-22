@@ -49,3 +49,8 @@ Authorization: Bearer {{auth_token}}
     client.global.set("user_password", JSON.parse(request.body()).newPassword);
   }
 %}
+
+###
+POST http://localhost:8000/login
+Content-Type: application/json
+Accept: application/json

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
     <entity name="Quiz\UserSession\Domain\User" table="users">
-        <id name="userId" column="id" type="user_id" length="36" />
+        <id name="userId" column="id" type="user_id" />
         <embedded name="email" class="Quiz\UserSession\Domain\Email" use-column-prefix="false" />
         <embedded name="name" class="Quiz\UserSession\Domain\Name" use-column-prefix="false" />
         <embedded name="password" class="Quiz\UserSession\Domain\Password" use-column-prefix="false" />

@@ -24,9 +24,4 @@ final readonly class Email
             throw EmailException::tooLong($this->value, self::MAX_LENGTH);
         }
     }
-
-    public function __toString(): string
-    {
-        return $this->value;
-    }
 }

@@ -19,6 +19,11 @@ services:
     environment:
       - RABBITMQ_DEFAULT_USER=${AMQP_USER}
       - RABBITMQ_DEFAULT_PASS=${AMQP_PASSWORD}
+  mail:
+    image: mailhog/mailhog:v1.0.1
+    ports:
+      - 1025:1025
+      - 8025:8025
   api:
     build:
       context: .
@@ -30,3 +35,13 @@ services:
     depends_on:
       - db
       - amqp
+#  app:
+#    build:
+#      context: .
+#      dockerfile: etc/app/Dockerfile
+#    ports:
+#      - ${APP_PORT}:3000
+#    volumes:
+#      - ./app:/app
+#    depends_on:
+#      - api

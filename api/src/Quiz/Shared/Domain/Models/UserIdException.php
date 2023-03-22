@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Quiz\UserSession\Domain;
+namespace Quiz\Shared\Domain\Models;
 
 use Quiz\Shared\Domain\QuizException;
 

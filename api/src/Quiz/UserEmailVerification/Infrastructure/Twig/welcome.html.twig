@@ -1,0 +1,74 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        }
+
+        h2 {
+            background-color: #d65d0e;
+            padding: 16px;
+            margin: 0 0 12px 0;
+            font-size: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        p {
+            margin: 0;
+            padding: 4px 16px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .container {
+            color: #000000;
+            width: 640px;
+            margin: 0 auto;
+        }
+
+        .center {
+          text-align: center;
+        }
+
+        .btn {
+          display: inline-block;
+          background-color: #d65d0e;
+          padding: 12px;
+          margin: 16px;
+          border-radius: 6px;
+          border: 0;
+        }
+    </style>
+</head>
+<body>
+    <table class="container">
+        <tbody>
+            <tr>
+                <td><h2><a href="{{ homeUrl }}">Welcome to Quiz</a></h2></td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="container">
+        <tbody>
+        <tr>
+            <td><p>Hi {{ name }}. Thanks for signing up for Quiz.</p></td>
+        </tr>
+        <tr>
+            <td><p>Before you start, you need to verify your email. Click the button below.</p></td>
+        </tr>
+        <tr>
+            <td><p class="center pb"><a class="btn" href="{{ verifyUrl }}">Verify email</a></p></td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -11,6 +11,7 @@ readonly class User implements UserInterface, PasswordAuthenticatedUserInterface
         public string $id,
         public string $name,
         public string $email,
+        public bool $isVerified,
         public string $password,
     ) {
     }

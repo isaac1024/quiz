@@ -2,7 +2,7 @@ doctrine:
     dbal:
         url: '%env(resolve:DATABASE_URL)%'
         types:
-            user_id: Quiz\UserSession\Infrastructure\Doctrine\UserIdType
+            user_id: Quiz\Shared\Infrastructure\Doctrine\UserIdType
     orm:
         auto_generate_proxy_classes: true
         enable_lazy_ghost_objects: true
@@ -19,6 +19,11 @@ doctrine:
                 type: xml
                 dir: '%kernel.project_dir%/src/Quiz/UserSession/Infrastructure/Doctrine/'
                 prefix: 'Quiz\UserSession\Domain'
+            UserEmailVerification:
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/src/Quiz/UserEmailVerification/Infrastructure/Doctrine/'
+                prefix: 'Quiz\UserEmailVerification\Domain'
 
 when@test:
     doctrine:

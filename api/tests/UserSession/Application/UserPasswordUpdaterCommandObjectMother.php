@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Quiz\Tests\UserSession\Application;
 
 use Faker\Factory;
+use Quiz\Tests\Shared\Domain\Models\UserIdObjectMother;
 use Quiz\Tests\UserSession\Domain\PasswordObjectMother;
-use Quiz\Tests\UserSession\Domain\UserIdObjectMother;
 use Quiz\UserSession\Application\UserPasswordUpdaterCommand;
 
 class UserPasswordUpdaterCommandObjectMother

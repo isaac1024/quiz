@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Quiz\UserSessionMail\Application;
+namespace Quiz\UserEmailVerification\Application;
 
 use DateTimeImmutable;
 use Quiz\Shared\Domain\Bus\Event;

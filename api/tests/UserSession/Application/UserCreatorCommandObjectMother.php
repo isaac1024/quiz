@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Quiz\Tests\UserSession\Application;
 
+use Quiz\Tests\Shared\Domain\Models\UserIdObjectMother;
 use Quiz\Tests\UserSession\Domain\EmailObjectMother;
 use Quiz\Tests\UserSession\Domain\NameObjectMother;
 use Quiz\Tests\UserSession\Domain\PasswordObjectMother;
-use Quiz\Tests\UserSession\Domain\UserIdObjectMother;
 use Quiz\UserSession\Application\UserCreatorCommand;
 
 final class UserCreatorCommandObjectMother

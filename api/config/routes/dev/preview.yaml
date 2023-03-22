@@ -1,0 +1,4 @@
+preview_mail:
+  path: /dev/preview
+  controller: App\Controller\PreviewController
+  methods: GET

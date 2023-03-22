@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace Quiz\Tests\UserSession\Domain;
 
+use Quiz\Shared\Domain\Models\UserId;
+use Quiz\Tests\Shared\Domain\Models\UserIdObjectMother;
 use Quiz\UserSession\Application\UserCreatorCommand;
 use Quiz\UserSession\Domain\Email;
 use Quiz\UserSession\Domain\Name;
 use Quiz\UserSession\Domain\Password;
 use Quiz\UserSession\Domain\User;
-use Quiz\UserSession\Domain\UserId;
 
 final class UserObjectMother
 {

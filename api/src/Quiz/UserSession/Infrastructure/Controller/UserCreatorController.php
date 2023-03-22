@@ -2,13 +2,13 @@
 
 namespace Quiz\UserSession\Infrastructure\Controller;
 
+use Quiz\Shared\Domain\Models\UserIdException;
 use Quiz\Shared\Domain\Models\UuidUtils;
 use Quiz\Shared\Infrastructure\Symfony\ApiController;
 use Quiz\UserSession\Application\UserCreatorCommand;
 use Quiz\UserSession\Domain\EmailException;
 use Quiz\UserSession\Domain\NameException;
 use Quiz\UserSession\Domain\PasswordException;
-use Quiz\UserSession\Domain\UserIdException;
 use Quiz\UserSession\Infrastructure\Request\UserCreatorRequest;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;

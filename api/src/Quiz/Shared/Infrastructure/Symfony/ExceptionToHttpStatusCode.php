@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Quiz\Shared\Infrastructure\Symfony;
 
+use App\Entity\UserException;
 use InvalidArgumentException;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -14,6 +15,7 @@ final class ExceptionToHttpStatusCode
     /** @var array<string, int> $exceptions */
     private array $exceptions = [
         InvalidArgumentException::class => Response::HTTP_BAD_REQUEST,
+        UserException::class => Response::HTTP_UNAUTHORIZED,
         NotFoundHttpException::class => Response::HTTP_NOT_FOUND,
     ];
 
