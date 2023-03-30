@@ -9,15 +9,6 @@ use Quiz\Shared\Domain\Models\DateTimeUtils;
 
 final class UserPasswordUpdated extends DomainEvent
 {
-//    public static function fromConsumer(array $eventData): static
-//    {
-//        return new UserPasswordUpdated(
-//            $eventData['data']['id'],
-//            $eventData['id'],
-//            DateTimeUtils::fromString($eventData['occurredOn']),
-//        );
-//    }
-
     public function type(): string
     {
         return 'quiz.user.password_updated';

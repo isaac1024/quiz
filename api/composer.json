@@ -84,6 +84,7 @@
             "@auto-scripts"
         ],
         "test": "bin/phpunit",
+        "mutant": "infection --show-mutations",
         "php-cs-fixer": "vendor/bin/php-cs-fixer fix --allow-risky=yes --using-cache=no",
         "phpcs": "vendor/bin/phpcs",
         "phpmd": "vendor/bin/phpmd ./src ansi rulesets.xml",

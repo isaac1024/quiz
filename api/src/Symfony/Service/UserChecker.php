@@ -22,6 +22,9 @@ final class UserChecker implements UserCheckerInterface
         }
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     */
     public function checkPostAuth(UserInterface $user): void
     {
     }

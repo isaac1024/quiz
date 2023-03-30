@@ -13,7 +13,7 @@ use Twig\Environment;
 
 final readonly class DoctrineEmailSender implements EmailSender
 {
-    const SUBJECT = 'Welcome to Quiz';
+    public const SUBJECT = 'Welcome to Quiz';
 
     public function __construct(
         private MailerInterface $mailer,

@@ -10,7 +10,7 @@ final readonly class Email
     {
     }
 
-    public function isSame(string $email)
+    public function isSame(string $email): bool
     {
         return $this->value === $email;
     }

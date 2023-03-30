@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Quiz\UserEmailVerification\Domain;
 
 use DateTimeImmutable;
+use Quiz\Shared\Domain\Models\DateTimeUtils;
 
 final readonly class Verified
 {
@@ -14,7 +15,11 @@ final readonly class Verified
 
     public function generateToken(): Verified
     {
-        return new Verified(false, bin2hex(random_bytes(64)), new DateTimeImmutable('+15 minutes'));
+        return new Verified(
+            false,
+            bin2hex(random_bytes(64)),
+            DateTimeUtils::fromRelative('+15 minutes')
+        );
     }
 
     public function verify(): Verified

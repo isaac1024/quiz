@@ -23,6 +23,11 @@ final class DateTimeUtils
         return $datetime;
     }
 
+    public static function fromRelative(string $relative): DateTimeImmutable
+    {
+        return new DateTimeImmutable($relative);
+    }
+
     public static function format(DateTimeImmutable $dateTime): string
     {
         return $dateTime->format(DateTimeImmutable::ATOM);

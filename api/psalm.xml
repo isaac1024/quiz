@@ -32,5 +32,15 @@
                 <directory name="tests" />
             </errorLevel>
         </RedundantPropertyInitializationCheck>
+        <PossiblyNullArgument errorLevel="error">
+            <errorLevel type="suppress">
+                <directory name="tests" />
+            </errorLevel>
+        </PossiblyNullArgument>
+        <PossiblyNullReference errorLevel="error">
+            <errorLevel type="suppress">
+                <directory name="tests" />
+            </errorLevel>
+        </PossiblyNullReference>
     </issueHandlers>
 </psalm>

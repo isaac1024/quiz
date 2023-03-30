@@ -14,17 +14,12 @@ class UserPasswordUpdaterControllerTest extends AcceptanceTestCase
 {
     public function testUpdateUserPassword(): void
     {
-        /** @var UserRepository $userRepository */
-        $userRepository = $this->getRepository(UserRepository::class);
+        $this->createUser();
+        $this->verifyUser();
+        $request = UserPasswordUpdateRequestObjectMother::makeArray($this->password());
 
-        $oldPassword = PasswordObjectMother::raw();
-        $user = UserObjectMother::make(password: PasswordObjectMother::make($oldPassword));
-        $userRepository->save($user);
-
-        $request = UserPasswordUpdateRequestObjectMother::makeArray($oldPassword);
-
-        $this->login($user->email()->value, $oldPassword);
-        $this->json('PUT', sprintf('/user/%s/password', $user->userId()->value), $request);
+        $this->login();
+        $this->json('PUT', sprintf('/user/%s/password', $this->userId()->value), $request);
         $this->asserStatusCode(200);
     }
 }

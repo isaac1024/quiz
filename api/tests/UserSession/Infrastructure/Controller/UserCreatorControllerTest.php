@@ -13,5 +13,8 @@ class UserCreatorControllerTest extends AcceptanceTestCase
     {
         $this->json('POST', '/register', UserCreatorRequestObjectMother::makeArray());
         $this->asserStatusCode(201);
+
+        $transport = $this->getTransport();
+        self::assertCount(1, $transport->getSent());
     }
 }

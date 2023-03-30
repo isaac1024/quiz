@@ -1,4 +1,12 @@
 services:
-    Quiz\UserSession\Infrastructure\DoctrineUserRepository:
+    Quiz\UserSession\Infrastructure\Repository\DoctrineUserRepository:
         arguments: ['@doctrine.orm.default_entity_manager']
+        public: true
+
+    Quiz\UserEmailVerification\Infrastructure\Repository\DoctrineUserRepository:
+        arguments: [ '@doctrine.orm.default_entity_manager' ]
+        public: true
+
+    Quiz\UserEmailVerification\Infrastructure\Mailer\EmailSender:
+        arguments: [ '@doctrine.orm.default_entity_manager' ]
         public: true
