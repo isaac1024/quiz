@@ -1,0 +1,7 @@
+.input {
+    padding: calc(var(--size) / 2);
+    border-radius: var(--radius);
+    border: 1px solid var(--foreground);
+    color: var(--foreground);
+    background-color: transparent;
+}

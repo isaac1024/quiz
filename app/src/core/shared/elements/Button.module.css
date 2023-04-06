@@ -1,0 +1,23 @@
+.btn {
+    padding: calc(var(--size) / 2);
+    border-radius: var(--radius);
+    border: 1px solid var(--foreground);
+    color: var(--foreground);
+    background-color: transparent;
+}
+
+.btn:hover {
+    color: var(--background);
+    background-color: var(--foreground);
+}
+
+.btn-primary {
+    composes: btn;
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.btn-primary:hover {
+    color: var(--foreground);
+    background-color: var(--primary);
+}

@@ -1,0 +1,14 @@
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--size)/2);
+}
+
+.login-form label {
+    font-weight: bold;
+}
+
+.login-form small {
+    color: var(--red);
+    height: calc(var(--size)*1.5);
+}

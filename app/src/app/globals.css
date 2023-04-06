@@ -1,0 +1,102 @@
+:root {
+  --background: var(--dark3);
+  --foreground: var(--light3);
+  --primary: var(--brown);
+  --size: 1rem;
+  --radius: 6px;
+
+  --dark3: #282828;
+  --dark2: #3c3836;
+  --dark1: #504945;
+  --dark0: #665c54;
+  --light0: #bdae93;
+  --light1: #d5c4a1;
+  --light2: #ebdbb2;
+  --light3: #fbf1c7;
+  --red: #fb4934;
+  --orange: #fe8019;
+  --yellow: #fabd2f;
+  --green: #b8bb26;
+  --aqua: #8ec07c;
+  --blue: #83a598;
+  --purple: #d3869b;
+  --brown: #d65d0e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-base);
+  font-size: 1rem;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+main {
+  display: block;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+a {
+  background-color: transparent;
+}
+
+b, strong {
+  font-weight: bolder;
+}
+
+small {
+  font-size: 80%;
+}
+
+img {
+  border-style: none;
+}
+
+button, input, optgroup, select, textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+}
+
+button, input {
+  overflow: visible;
+}
+
+button, select {
+  text-transform: none;
+}
+
+button, [type="button"], [type="reset"], [type="submit"] {
+  -webkit-appearance: button;
+}
+
+textarea {
+  overflow: auto;
+}
+
+[type="checkbox"], [type="radio"] {
+  padding: 0;
+}
+
+[type="search"] {
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
+}
+
+[hidden] {
+  display: none;
+}

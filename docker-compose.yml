@@ -35,13 +35,13 @@ services:
     depends_on:
       - db
       - amqp
-#  app:
-#    build:
-#      context: .
-#      dockerfile: etc/app/Dockerfile
-#    ports:
-#      - ${APP_PORT}:3000
-#    volumes:
-#      - ./app:/app
-#    depends_on:
-#      - api
+  app:
+    build:
+      context: .
+      dockerfile: etc/app/Dockerfile
+    ports:
+      - ${APP_PORT}:3000
+    volumes:
+      - ./app:/app
+    depends_on:
+      - api

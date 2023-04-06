@@ -13,3 +13,16 @@
 /api/.php-cs-fixer.cache
 /api/config/jwt/*.pem
 /api/tests/.phpunit.cache/
+
+#app
+/app/node_modules/
+/app/.pnpm-store/
+/app/.pnp
+/app/.pnp.js
+/app/coverage
+/app/.next/
+/app/out/
+/app/build
+/app/.vercel
+/app/*.tsbuildinfo
+/app/next-env.d.ts
